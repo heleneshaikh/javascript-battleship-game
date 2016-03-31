@@ -65,4 +65,21 @@ var controller = {
 	processGuess : function(guess) {
 
 	}
-};
+}
+
+function parseGuess(guess) { //B1
+	var alphabet = ["A", "B", "C", "D", "E", "F"];
+	if (guess === null || guess !== 2) {
+		alert('Error! Enter a letter followed by a number');
+	} else {
+		firstCharacter = guess.charAt(0); //B
+		var row = alphabet.indexOf(firstCharacter); //1
+		var column = guess.charAt(1);
+
+		if(isNan(row) || isNan(column)) {
+			alert('This is not on the board');
+		} else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
+			alert('That is off the board');
+		}
+	}
+}
