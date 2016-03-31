@@ -96,8 +96,8 @@ function parseGuess(guess) { //B1
 }
 
 /* TEST */
-console.log(parseGuess("A0"));
-console.log(parseGuess("B6"));
-console.log(parseGuess("G3"));
+console.log(parseGuess("A0")); //00
+console.log(parseGuess("B6")); //16
+console.log(parseGuess("G3")); //63
 console.log(parseGuess("H0"));
 console.log(parseGuess("A7"));
