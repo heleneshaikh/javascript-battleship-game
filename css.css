@@ -1,0 +1,58 @@
+html {
+	font-size:62.5%;
+}
+
+body {
+	background: black;
+	color: rgb(83, 175, 19);
+	font-size: 2rem;
+	line-height: 1.5;
+}
+
+.board {
+	background: url('board.jpg') no-repeat;
+	position: relative; /* everything nested in board can now be positioned relatively to it */
+	width: 1024px;
+	height: 863px;
+	margin: auto;
+	margin-top: 10px;
+}
+
+#message {
+   position: relative;
+	 width: 100%;
+	 left: 600px;
+}
+
+table {
+	border-spacing: 0px;
+	position: absolute;
+	left: 173px;
+	top: 98px;
+}
+td {
+	width: 94px;
+	height: 94px;
+}
+
+form {
+	position: absolute;
+	bottom: -10px;
+	right: 0px;
+	padding: 8px;
+	background-color: rgb(83, 175, 19);
+}
+
+form input {
+	background-color: rgb(152, 207, 113);
+	border-color: rgb(83, 175, 19);
+	font-size: 1em;
+}
+
+.hit {
+	background: url('ship.png') no-repeat center center;
+}
+
+.miss {
+	background: url('miss.png') no-repeat center center;
+}
