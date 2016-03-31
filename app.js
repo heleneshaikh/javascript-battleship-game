@@ -80,6 +80,9 @@ function parseGuess(guess) { //B1
 			alert('This is not on the board');
 		} else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
 			alert('That is off the board');
+		} else {
+			return row + column; //concatenation
 		}
 	}
+	return null;
 }
