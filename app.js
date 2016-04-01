@@ -61,20 +61,27 @@ var model = {
 };
 
 var controller = {
-	guesses: 0;
+	guesses: 0,
 	processGuess : function(guess) {
 		var location = parseGuess(guess);
+		if (location) { //location !== null ?
+			this.guesses++;
+			var hit = model.fire(location); //fire method returns true if it's hit
+			if (hit && model.isSunk === model.numberOfShips) {
+				displayMessage('you sank my battleship in ' + this.guesses + ' !');
+			}
+		}
 	}
 }
 
-function parseGuess(guess) { //B1
+function parseGuess(guess) { //B3
 	var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
 	if (guess === null || guess.length !== 2) {
 		alert('Error! Enter a letter followed by a number');
 	} else {
 		var firstCharacter = guess.charAt(0); //B
 		var row = alphabet.indexOf(firstCharacter); //1
-		var column = guess.charAt(1);
+		var column = guess.charAt(1); //3
 
 		if(isNaN(row) || isNaN(column)) {
 			alert('This is not on the board');
@@ -86,3 +93,15 @@ function parseGuess(guess) { //B1
 	}
 	return null;
 }
+
+function init() {
+	var fireButton = document.getElementById('fireButton');
+	fireButton.onclick = handleFireButton;
+
+	function handleFireButton() {
+		var guessInput = document.getElementById('guessInput');
+		var guess = guessInput.value;
+	}
+}
+
+window.onload = init;

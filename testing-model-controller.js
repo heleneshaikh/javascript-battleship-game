@@ -59,7 +59,7 @@ var model = {
 		return true;
 	}
 };
-/* TEST */
+/* TEST fire function */
 model.fire("53");
 model.fire("06");
 model.fire("16");
@@ -95,9 +95,27 @@ function parseGuess(guess) { //B1
 	return null;
 }
 
-/* TEST */
+/* TEST parseGuess function */
 console.log(parseGuess("A0")); //00
 console.log(parseGuess("B6")); //16
 console.log(parseGuess("G3")); //63
 console.log(parseGuess("H0"));
 console.log(parseGuess("A7"));
+
+/* TEST processGuess function */
+controller.processGuess("A0");
+
+	/* you sank my battleship: */
+controller.processGuess("A6");
+controller.processGuess("B6");
+controller.processGuess("C6");
+
+	/* you sank my battleship: */
+controller.processGuess("C4");
+controller.processGuess("D4");
+controller.processGuess("E4");
+
+	/* you sank my battleship: */
+controller.processGuess("B0");
+controller.processGuess("B1");
+controller.processGuess("B2");
