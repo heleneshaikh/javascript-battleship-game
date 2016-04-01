@@ -22,33 +22,38 @@ var model = {
 	numberOfShips: 3,
 	shipLength: 3,
 	shipsSunk: 0,
-	ships: [
-					{ locations: ["06", "16", "26"], hits: ['', '', ''] },
-				  { locations: ["24", "34", "44"], hits: ['', '', ''] },
-					{ locations: ["10", "11", "12"], hits: ['', '', ''] }
-	],
+	ships: [{
+		locations: ["06", "16", "26"],
+		hits: ['', '', '']
+	}, {
+		locations: ["24", "34", "44"],
+		hits: ['', '', '']
+	}, {
+		locations: ["10", "11", "12"],
+		hits: ['', '', '']
+	}],
 
 	fire: function(guess) {
-		for (var i = 0 ; i < this.numberOfShips; i++) {
+		for (var i = 0; i < this.numberOfShips; i++) {
 			var ship = this.ships[i];
 			var index = ship.locations.indexOf(guess); //search for guess in locations array of that particular ship
 
-			if (index >=0) {
+			if (index >= 0) {
 				ship.hits[index] = "hit"; //mark the hit at the same spot
 				view.displayHit(guess);
 				view.displayMessage("HIT!");
 
 				if (this.isSunk(ship)) {
-						view.displayMessage("You sank my battleship!");
-						this.shipsSunk++;
-					}
-					return true;
+					view.displayMessage("You sank my battleship!");
+					this.shipsSunk++;
 				}
+				return true;
 			}
-			view.displayMiss(guess);
-			view.displayMessage("You missed.");
-			return false;
-		},
+		}
+		view.displayMiss(guess);
+		view.displayMessage("You missed.");
+		return false;
+	},
 
 	isSunk: function(ship) {
 		for (var i = 0; i < this.shipLength; i++) {
@@ -62,7 +67,7 @@ var model = {
 
 var controller = {
 	guesses: 0,
-	processGuess : function(guess) {
+	processGuess: function(guess) {
 		var location = parseGuess(guess);
 		if (location) { //location !== null ?
 			this.guesses++;
@@ -83,7 +88,7 @@ function parseGuess(guess) { //B3
 		var row = alphabet.indexOf(firstCharacter); //1
 		var column = guess.charAt(1); //3
 
-		if(isNaN(row) || isNaN(column)) {
+		if (isNaN(row) || isNaN(column)) {
 			alert('This is not on the board');
 		} else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
 			alert('That is off the board');
@@ -94,14 +99,24 @@ function parseGuess(guess) { //B3
 	return null;
 }
 
+//event handlers:
+
+function handleFireButton() {
+	var guessInput = document.getElementById('guessInput');
+	var guess = guessInput.value;
+	controller.processGuess(guess);
+	guessInput.value = ""; //resets the form input. Don’t have to explicitly select the text and delete it before entering the next guess.
+}
+
+function handleKeyPress() {
+	var fireButton = document.getElementById("fireButton");
+}
+
 function init() {
 	var fireButton = document.getElementById('fireButton');
 	fireButton.onclick = handleFireButton;
-
-	function handleFireButton() {
-		var guessInput = document.getElementById('guessInput');
-		var guess = guessInput.value;
-	}
+	var guessInput = document.getElementById("guessInput");
+	guessInput.onkeypress = handleKeyPress;
 }
 
 window.onload = init;
