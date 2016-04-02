@@ -22,7 +22,7 @@ var model = {
 	numberOfShips: 3,
 	shipLength: 3,
 	shipsSunk: 0,
-	ships: [{
+	ships: [{ //one ships array[] containing three ships objects {} that each have a location[] array and hits [] array
 		locations: ["06", "16", "26"],
 		hits: ['', '', '']
 	}, {
@@ -47,12 +47,12 @@ var model = {
 					view.displayMessage("You sank my battleship!");
 					this.shipsSunk++;
 				}
-				return true;
+				return true; //return true because we had a hit
 			}
 		}
 		view.displayMiss(guess);
 		view.displayMessage("You missed.");
-		return false;
+		return false; //Otherwise, if we make it through all the ships and don't have a hit, it's a miss, so we return false.
 	},
 
 	isSunk: function(ship) {

@@ -15,6 +15,7 @@ var view = {
 	}
 };
 
+view.displayMessage('Hello');
 view.displayMiss("00");
 view.displayHit("34");
 view.displayMiss("55");
