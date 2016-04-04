@@ -10,7 +10,7 @@ body {
 }
 
 .board {
-	background: url('board.jpg') no-repeat;
+	background: url('images/board.jpg') no-repeat;
 	position: relative; /* everything nested in board can now be positioned relatively to it */
 	width: 1024px;
 	height: 863px;
@@ -50,9 +50,9 @@ form input {
 }
 
 .hit {
-	background: url('ship.png') no-repeat center center;
+	background: url('images/ship.png') no-repeat center center;
 }
 
 .miss {
-	background: url('miss.png') no-repeat center center;
+	background: url('images/miss.png') no-repeat center center;
 }
